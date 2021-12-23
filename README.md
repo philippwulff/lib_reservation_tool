@@ -10,6 +10,6 @@ For this, the tool requires some configuration data from the user (full name, TU
 
 ## Known Issues
 
-## Credits
+## Disclaimer
 
 All commercial use of this software is prohibited.
