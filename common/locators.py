@@ -2,7 +2,8 @@ from selenium.webdriver.common.by import By
 
 
 class LandingPageLocators:
-    """CSS selectors for the landing page:
+    """
+    CSS selectors for the landing page:
     https://www.ub.tum.de/arbeitsplatz-reservieren
     """
 

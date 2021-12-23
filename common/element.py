@@ -1,6 +1,7 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from common.locators import LandingPageLocators
 from common import utils
+from common.exceptions import WebpageLocatorError
 from selenium.common.exceptions import NoSuchElementException
 
 
@@ -35,12 +36,12 @@ class LocationElement(object):
     def __init__(self, driver, locator: (str, str)):
         try:
             self.parent = driver.find_element(*locator)
-        except NoSuchElementException:
-            raise FileNotFoundError("Could not find the branch elements.")
+        except NoSuchElementException as e:
+            raise WebpageLocatorError("Could not find the row element.", e)
         try:
             self.reserve_button = self.parent.find_element(*LandingPageLocators.RESERVE_BUTTON)
-        except NoSuchElementException:
-            raise FileNotFoundError("Could not find the 'reserve button' element.")
+        except NoSuchElementException as e:
+            raise WebpageLocatorError("Could not find the 'Zur Reservierung' element.", e)
 
     @property
     @utils.element_not_found

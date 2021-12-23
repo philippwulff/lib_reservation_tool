@@ -9,6 +9,8 @@ def safari_click(element):
 
 
 def element_not_found(func):
+    """Helper function to decorate getter methods for HTML element attributes. This catches the exception if an element
+    is not found."""
     def wrapper(*args, **kwargs):
         try:
             return func(*args, **kwargs)
