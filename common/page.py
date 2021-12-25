@@ -60,12 +60,14 @@ class LandingPage(BasePage):
 
 class BookingPage(BasePage):
     """
-    All methods that are supposed to act on:
-    ...
+    All methods that are supposed to act on pages like:
+    https://www.ub.tum.de/reserve/378129719
     """
     def __init__(self, driver):
         """See parent class."""
         super(BookingPage, self).__init__(driver)
+
+        self.name = BaseTextElement()
 
 
 
