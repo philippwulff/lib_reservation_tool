@@ -2,11 +2,17 @@
 
 {% block content %}
 <div class="page-content">
-    {% if user.is_authenticated %}
-        <h1>Your Reservation Schedules</h1>
-        <div>Here it is</div>
+
+    <h1>Your Reservation Schedules</h1>
+    {% if all_reservations_list %}
+    <ul>
+        {% for reservation in all_reservations_list %}
+        <li><a href="{% url 'reservation_app:home' reservation.id %}">{{ reservation }}</a></li>
+        {% endfor %}
+    </ul>
     {% else %}
-        <div class="large-text">Log in to view your reservation schedules.</div>
+    <p>No schedules found.</p>
     {% endif %}
+
 </div>
 {% endblock %}
