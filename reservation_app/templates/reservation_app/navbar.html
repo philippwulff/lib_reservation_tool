@@ -1,0 +1,29 @@
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Navbar</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
+</head>
+
+<header>
+  <nav class="main-nav">
+    <input type="checkbox" id="check" />
+    <label for="check" class="menu-btn">
+      <i class="fas fa-bars"></i>
+    </label>
+    <a href="/" class="logo">LibResTool</a>
+    <ul class="navlinks">
+      <li><a href="{% url 'home'}">Home</a></li>
+      <li><a href="#">Booking</a></li>
+      {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}" class="contact">Log out</a></li>
+      {% else %}
+        <li><a href="{% url 'login' %}" class="contact">Log in</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+</header>
