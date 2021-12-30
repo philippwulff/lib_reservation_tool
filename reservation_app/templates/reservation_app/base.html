@@ -1,0 +1,20 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'reservation_app/style.css' %}">
+
+<html lang="en">
+<body>
+{% include "reservation_app/navbar.html" %}
+
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+
+<footer>
+    <div class="footer-copyright text-center">&copy; Developed with ❤️ by
+        <a href="https://github.com/philippwulff">P Wulff</a> in Munich.
+    </div>
+</footer>
+</body>
+</html>
