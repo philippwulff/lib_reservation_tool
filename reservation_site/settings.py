@@ -126,3 +126,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # to redirect the user to the home page
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = "home"
+
+# For the custom user class
+AUTH_USER_MODEL = 'reservation_app.CustomUser'

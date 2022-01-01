@@ -1,18 +1,38 @@
 {% extends 'reservation_app/base.html' %}
+{% load static %}
 
 {% block content %}
 <div class="page-content">
+    <h1>Active reservation schedules</h1>
 
-    <h1>Your Reservation Schedules</h1>
-    {% if all_reservations_list %}
-    <ul>
-        {% for reservation in all_reservations_list %}
-        <li><a href="{% url 'reservation_app:home' reservation.id %}">{{ reservation }}</a></li>
+    <div class="page-content">
+    {% if all_ResSched_list %}
+    <table class="rwd-table">
+      <tr>
+        <th>Branch</th>
+        <th>Slot</th>
+        <th>Created on</th>
+        <th></th>
+      </tr>
+        {% for ResSched in all_ResSched_list %}
+      <tr>
+        <td>{{ ResSched.lib_branch }}</td>
+        <td>{{ ResSched.res_slot }}</td>
+        <td>{{ ResSched.pub_datetime }}</td>
+          <td>
+              <form action="{% url 'delete_sched' pk=ResSched.pk %}" method="POST">
+                  {% csrf_token %}
+                  <input class="button" type="submit" value="Delete"/>
+              </form>
+          </td>
+      </tr>
         {% endfor %}
-    </ul>
+    </table>
+
     {% else %}
     <p>No schedules found.</p>
     {% endif %}
+        </div>
 
 </div>
 {% endblock %}

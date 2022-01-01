@@ -15,10 +15,11 @@
     <label for="check" class="menu-btn">
       <i class="fas fa-bars"></i>
     </label>
-    <a href="/" class="logo">LibResTool</a>
+    <a href="{% url 'home' %}" class="logo">LibResTool</a>
     <ul class="navlinks">
-      <li><a href="{% url 'home'}">Home</a></li>
-      <li><a href="#">Booking</a></li>
+      <li><a href="{% url 'home' %}">My Schedules</a></li>
+      <li><a href="{% url 'booking' %}">Booking</a></li>
+      <li><a href="{% url 'user_profile' user.pk %}">Profile</a></li>
       {% if user.is_authenticated %}
         <li><a href="{% url 'logout' %}" class="contact">Log out</a></li>
       {% else %}

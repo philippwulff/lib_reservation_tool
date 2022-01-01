@@ -21,7 +21,7 @@ header {
 main {
   text-align: left;
   /* Center child horizontally*/
-  display: flex;
+  display: block;
   justify-content: center;
   width: 100%;
   /* Setup */
@@ -32,6 +32,15 @@ main {
 .page-content {
   /* Center horizontally*/
   margin: 0 auto;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+form {
+  align-content: center;
+  text-align: center;
 }
 
 footer {
@@ -130,6 +139,7 @@ li a.contact:hover {
   font-size: 16px;
 }
 
+
 #check {
   display: none;
 }
@@ -190,4 +200,62 @@ li a.contact:hover {
   .menu-btn:focus {
     color: blue;
   }
+}
+
+/* table */
+
+.rwd-table {
+  margin: 1em auto;
+  min-width: 300px;
+  text-align: left;
+  background: #34495e;
+   color: #fff;
+   border-radius: 0.4em;
+   overflow: hidden;
+}
+
+ .rwd-table tr {
+	 border-top: 1px solid #ddd;
+	 border-bottom: 1px solid #ddd;
+}
+ .rwd-table th {
+	 display: none;
+}
+ .rwd-table td {
+	 display: block;
+}
+ .rwd-table td:first-child {
+	 padding-top: 0.5em;
+}
+ .rwd-table td:last-child {
+	 padding-bottom: 0.5em;
+}
+
+ @media (min-width: 480px) {
+	 .rwd-table th, .rwd-table td {
+		 display: table-cell;
+		 padding: 0.25em 0.5em;
+	}
+	 .rwd-table th:first-child, .rwd-table td:first-child {
+		 padding-left: 0;
+	}
+	 .rwd-table th:last-child, .rwd-table td:last-child {
+		 padding-right: 0;
+	}
+}
+
+ .rwd-table tr {
+	 border-color: #46637f;
+}
+ .rwd-table th, .rwd-table td {
+	 margin: 0.5em 1em;
+}
+ @media (min-width: 480px) {
+	 .rwd-table th, .rwd-table td {
+		 padding: 1em !important;
+	}
+}
+ .rwd-table th, .rwd-table td:before {
+	 /*color: #dd5;*/
+   color: #00adb5;
 }
