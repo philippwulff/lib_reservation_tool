@@ -26,7 +26,10 @@ The frontend is powered by [Django](https://www.djangoproject.com).
 These two parts of the software are separate processes and communicate via a shared [SQLite](https://www.sqlite.org/index.html) database.
 The next 
 
-![Architecture](images/lib_res_tool_arch.svg?raw=true "Architecture")
+<p align="center">
+  <img src="images/lib_res_tool_arch.svg" />
+</p>
+
 
 ## Known issues
 
