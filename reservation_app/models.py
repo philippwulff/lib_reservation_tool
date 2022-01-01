@@ -33,6 +33,8 @@ class ReservationSchedule(models.Model):
     res_slot = models.CharField(max_length=50, choices=LibSlots.choices, default=LibSlots.morning)
     pub_datetime = models.DateTimeField("Datetime published")
 
+    current_res_datetime = models.DateField("Date of last completed reservation", default=None)
+
     def __str__(self):
         return f"ResSchedule: {self.lib_branch} - {self.owner} - {self.res_slot}"
 

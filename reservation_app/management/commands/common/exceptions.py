@@ -13,7 +13,10 @@ class WebpageLocatorError(Exception):
         None
         """
         super(WebpageLocatorError, self).__init__(msg)
-
+        self.error_msg = msg
         self.error = error
+
+    def __str__(self):
+        return str(self.__class__.__name__)
 
 

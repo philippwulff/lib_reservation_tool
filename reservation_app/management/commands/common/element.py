@@ -1,7 +1,7 @@
 from selenium.webdriver.support.ui import WebDriverWait
-from common.locators import LandingPageLocators, BookingPageLocators
-from common import utils
-from common.exceptions import WebpageLocatorError
+from reservation_app.management.commands.common.locators import LandingPageLocators, BookingPageLocators
+from reservation_app.management.commands.common import utils
+from reservation_app.management.commands.common.exceptions import WebpageLocatorError
 from selenium.common.exceptions import NoSuchElementException
 
 
@@ -12,7 +12,7 @@ class LocationElement(object):
         try:
             self.parent = driver.find_element(*locator)
         except NoSuchElementException as e:
-            raise WebpageLocatorError("Could not find the row element.", e)
+            raise WebpageLocatorError(f"Could not find the row element in the table.", e)
         try:
             self.reserve_button = self.parent.find_element(*LandingPageLocators.RESERVE_BUTTON)
         except NoSuchElementException as e:

@@ -19,8 +19,8 @@
     <ul class="navlinks">
       <li><a href="{% url 'home' %}">My Schedules</a></li>
       <li><a href="{% url 'booking' %}">Booking</a></li>
-      <li><a href="{% url 'user_profile' user.pk %}">Profile</a></li>
       {% if user.is_authenticated %}
+        <li><a href="{% url 'user_profile' user.pk %}">Profile</a></li>
         <li><a href="{% url 'logout' %}" class="contact">Log out</a></li>
       {% else %}
         <li><a href="{% url 'login' %}" class="contact">Log in</a></li>

@@ -12,11 +12,15 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 #from django.contrib.auth.models import User
 
 
-class HomeView(LoginRequiredMixin, generic.TemplateView):
+class HomeView(generic.TemplateView):
     template_name = 'reservation_app/home.html'
 
     def get_context_data(self, **kwargs):
-        return {"all_ResSched_list": ReservationSchedule.objects.filter(owner=self.request.user)}
+        user = self.request.user
+        cntx_d = {"all_ResSched_list": []}
+        if user.is_authenticated:
+            cntx_d["all_ResSched_list"] = ReservationSchedule.objects.filter(owner=self.request.user)
+        return cntx_d
 
 
 class BookingView(LoginRequiredMixin, generic.FormView):

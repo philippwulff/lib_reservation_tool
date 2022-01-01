@@ -1,5 +1,5 @@
-from common.element import BaseTextElement, LocationElement
-from common.locators import LandingPageLocators as LPL
+from reservation_app.management.commands.common.element import BaseTextElement, LocationElement
+from reservation_app.management.commands.common.locators import LandingPageLocators as LPL
 
 
 class BasePage(object):
