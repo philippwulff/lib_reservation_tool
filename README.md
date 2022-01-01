@@ -1,17 +1,37 @@
 # TUM Library Reservation Tool
 
-The TUM library is a great place to study, but for some reason the next day's reservations open early in the morning. 
-And waking up just to score a study place is annoying. This app automates the process. 
+This app creates schedules to automatically reserve seats in the TUM library.
 The user specifies which library branch he wants to study in and which dates and time slots are to be booked. 
 The tool will wait until the correct reservation can be made and book it automatically. 
 For this, the tool requires some configuration data from the user (full name, TUM email adress, etc.).
 
-To be precise, this tool simply opens the webpage at https://www.ub.tum.de/arbeitsplatz-reservieren, 
-and books the desired slot, once it is available. 
+## How to use it
 
-## Usage
+I hosted a live version of this tool over on [......](librestool.com).
 
-## Known Issues
+You can also clone this repository and host it yourself. For this, you will need to following commands:
+```
+python manage.py migrate        # to create the database
+python manage.py runserver      # to start the website
+
+# In another terminal windows
+python manage.py runscheduler   # to start the scheduling backend
+```
+## How it works
+
+The tool opens the webpage at https://www.ub.tum.de/arbeitsplatz-reservieren, 
+and waits until it is possible to reserve the desired seat. 
+I used [Selenium](https://selenium-python.readthedocs.io) as the backbbone of this process. 
+The frontend is powered by [Django](https://www.djangoproject.com). 
+These two parts of the software are separate processes and communicate via a shared [SQLite](https://www.sqlite.org/index.html) database.
+The next 
+
+![Architecture](images/lib_res_tool_arch.svg?raw=true "Architecture")
+
+## Known issues
+
+- Currently there exists no "Sign up" page. Users need to be created through the admin site (this requires creating a `superuser` first).
+- If the website of the TUM library is changed, the backend code may break. If the changes are small, this can probably be fixed by editing the CSS locators in `reservation_app/management/commands/common/locators.py`. 
 
 ## Disclaimer
 

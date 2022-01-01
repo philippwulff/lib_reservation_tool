@@ -9,7 +9,6 @@ from .models import ReservationSchedule, Reservation, CustomUser
 from django.urls import reverse_lazy, reverse
 from django.utils import timezone
 from django.contrib.auth.mixins import LoginRequiredMixin
-#from django.contrib.auth.models import User
 
 
 class HomeView(generic.TemplateView):

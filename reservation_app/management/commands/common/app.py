@@ -26,27 +26,35 @@ class App:
     def nav_to_landing_page(self):
         self.driver.get(self.web_adress)
 
-    def refresh(self, res_sched: list, sleep=3):
-        time.sleep(5)
+    def make_reservation(self, rs):
+        branch_name = rs["branch_name"]
+        time_slot = rs["time_slot"]
+        full_name = rs["full_name"]
+        tum_id = rs["tum_id"]
+        tum_email = rs["tum_email"]
 
-        for rs in res_sched:
-            branch_name = rs["branch_name"]
-            time_slot = rs["time_slot"]
-            full_name = rs["full_name"]
-            tum_id = rs["tum_id"]
-            tum_email = rs["tum_email"]
-            try:
-                self.nav_to_landing_page()
-                landing = LandingPage(self.driver)
-                is_available = landing.check_availability().get(branch_name)
-                if is_available:
-                    landing.click_reserve(branch_name, time_slot)
-                else:
-                    self._print(f"Branch {branch_name} is not available at time slot {time_slot}", bcolors.WARNING)
-            except WebpageLocatorError as e:
-                self._print(f"Ran into {e} (info: {e.args[0]})", bcolors.FAIL)
+        info = {
+            "success": False,
+            "reservation_datetime": "",
+        }
 
-        time.sleep(sleep)
+        try:
+            self.nav_to_landing_page()
+            landing = LandingPage(self.driver)
+            is_available = landing.check_availability().get(branch_name)
+            if is_available:
+                landing.click_reserve(branch_name, time_slot)
+                time.sleep(1)
+                booking = BookingPage(self.driver)
+                # TODO make booking
+                info["success"] = True
+                info["reservation_datetime"] = ...
+            else:
+                self._print(f"Branch {branch_name} is not available at time slot {time_slot}", bcolors.WARNING)
+        except WebpageLocatorError as e:
+            self._print(f"Ran into {e} (info: {e.args[0]})", bcolors.FAIL)
+
+        return
 
     def _print(self, txt: str, color_code=None):
         txt = f"[{datetime.now():%d-%m-%Y %H:%M:%S}]" + txt
