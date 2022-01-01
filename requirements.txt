@@ -1,0 +1,7 @@
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+# platform: osx-arm64
+
+django=4.0=pyhd8ed1ab_1
+python=3.10.1=h43b31ca_2_cpython
+selenium=4.1.0=pypi_0

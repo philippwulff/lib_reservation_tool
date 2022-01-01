@@ -5,6 +5,12 @@ The user specifies which library branch he wants to study in and which dates and
 The tool will wait until the correct reservation can be made and book it automatically. 
 For this, the tool requires some configuration data from the user (full name, TUM email adress, etc.).
 
+## Preview
+
+<p align="center">
+  <img src="" />
+</p>
+
 ## How to use it
 
 I hosted a live version of this tool over on [......](librestool.com).
@@ -14,7 +20,7 @@ You can also clone this repository and host it yourself. For this, you will need
 python manage.py migrate        # to create the database
 python manage.py runserver      # to start the website
 
-# In another terminal windows
+# In another terminal window
 python manage.py runscheduler   # to start the scheduling backend
 ```
 ## How it works
@@ -33,7 +39,7 @@ The next
 
 ## Known issues
 
-- Currently there exists no "Sign up" page. Users need to be created through the admin site (this requires creating a `superuser` first).
+- Currently there is no "Sign up" page. Users need to be created through the admin site (this requires creating a `superuser` first).
 - If the website of the TUM library is changed, the backend code may break. If the changes are small, this can probably be fixed by editing the CSS locators in `reservation_app/management/commands/common/locators.py`. 
 
 ## Disclaimer
