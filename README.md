@@ -7,8 +7,10 @@ For this, the tool requires some configuration data from the user (full name, TU
 
 ## Preview
 
+The web app has four pages: the log-in, a profile page, plus the booking and schedule overview pages.
+
 <p align="center">
-  <img src="" />
+  <img src="images/preview.gif" />
 </p>
 
 ## How to use it
@@ -17,12 +19,16 @@ I hosted a live version of this tool over on [......](librestool.com).
 
 You can also clone this repository and host it yourself. For this, you will need to following commands:
 ```
-python manage.py migrate        # to create the database
-python manage.py runserver      # to start the website
+python manage.py migrate            # to create a new database
+python manage.py createsuperuser    # to create the admin user
+python manage.py runserver          # to start the website
 
 # In another terminal window
-python manage.py runscheduler   # to start the scheduling backend
+python manage.py runscheduler       # to start the scheduling backend
 ```
+
+> **⚠️ NOTE:** If you do reuse the project, you must change the Django secret key in `reservation_site/settings.py`.
+
 ## How it works
 
 The tool opens the webpage at https://www.ub.tum.de/arbeitsplatz-reservieren, 
@@ -33,7 +39,7 @@ These two parts of the software are separate processes and communicate via a sha
 The image below shows this architecture:
 
 <p align="center">
-  <img src="images/lib_res_tool_arch.svg" />
+  <img src="images/lib_res_tool_arch.png" />
 </p>
 
 
