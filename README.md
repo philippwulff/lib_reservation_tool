@@ -27,10 +27,10 @@ python manage.py runscheduler   # to start the scheduling backend
 
 The tool opens the webpage at https://www.ub.tum.de/arbeitsplatz-reservieren, 
 and waits until it is possible to reserve the desired seat. 
-I used [Selenium](https://selenium-python.readthedocs.io) as the backbbone of this process. 
+I uses [Selenium](https://selenium-python.readthedocs.io) as the backbbone of this process. 
 The frontend is powered by [Django](https://www.djangoproject.com). 
 These two parts of the software are separate processes and communicate via a shared [SQLite](https://www.sqlite.org/index.html) database.
-The next 
+The image below shows this architecture:
 
 <p align="center">
   <img src="images/lib_res_tool_arch.svg" />

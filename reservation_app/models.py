@@ -20,6 +20,8 @@ class CustomUser(AbstractUser):
 
 class LibBranches(models.TextChoices):
     stammgelaende = "Stammgelände"
+    mathematik_informatik = "Mathematik & Informatik"
+    # Other branches are not supported right now
 
 
 class LibSlots(models.TextChoices):
