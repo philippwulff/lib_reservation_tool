@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-28p=3bi57k-1n&&47cn#*8n9me_hy00#r+gls&7c@lkucx7104
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# I needed to add this domain to host it on pythonanywhere.com
+ALLOWED_HOSTS = ['127.0.0.1', 'philippwulff.pythonanywhere.com']
 
 
 # Application definition
@@ -116,7 +117,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
+# I needed to add this on pythonanywhere.com
+import os
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

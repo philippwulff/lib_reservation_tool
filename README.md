@@ -15,7 +15,7 @@ The web app has four pages: the log-in, a profile page, plus the booking and sch
 
 ## How to use it
 
-I hosted a live version of this tool over on [......](librestool.com).
+I hosted a live version of this tool over on [http://philippwulff.pythonanywhere.com/](http://philippwulff.pythonanywhere.com/).
 
 You can also clone this repository and host it yourself. For this, you will need to following commands:
 ```
