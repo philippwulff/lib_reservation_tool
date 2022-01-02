@@ -29,6 +29,24 @@ python manage.py runscheduler       # to start the scheduling backend
 
 > **⚠️ NOTE:** If you do reuse the project, you must change the Django secret key in `reservation_site/settings.py`.
 
+To host it on [pythonanywhere](pythonanywhere.com) you need to follow this check-list (from [this guide](https://help.pythonanywhere.com/pages/DeployExistingDjangoProject/)):
+1. Create an account.
+2. Open a Bash terminal and run
+   ```
+   git clone 
+   cd lib_reservation_tool
+   python manage.py migrate
+   ```
+3. Create a web app in the 'Web' widget of pythonanywhere (choose manual configuration).
+4. In the 'Code' section set the path for 'Source code' to `/home/username/lib_reservation_tool/` (Your username!).
+5. Edit the WSGI configuration file according to the guide linked above.
+6. Serving static files in development to production.
+   - In `settings.py` set `STATIC_URL` and `STATIC_ROOT` (I already did this and [this](https://help.pythonanywhere.com/pages/DjangoStaticFiles) explains how).
+   - In the terminal run `python manage.py collectstatic`.
+   - In the 'Static files' section of the configuration set 'URL' to `/static/` and 'Directory' to `/home/username/LibResTool/static`.   
+7. Hit the reload button and navigate to the webpage!
+8. Done.
+
 ## How it works
 
 The tool opens the webpage at https://www.ub.tum.de/arbeitsplatz-reservieren, 
