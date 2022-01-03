@@ -9,6 +9,7 @@ from .models import ReservationSchedule, Reservation, CustomUser
 from django.urls import reverse_lazy, reverse
 from django.utils import timezone
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import Http404
 
 
 class HomeView(generic.TemplateView):
@@ -66,16 +67,22 @@ class UserProfileView(LoginRequiredMixin, generic.UpdateView):
         return super(UserProfileView, self).form_valid(form)
 
 
-
 class DeleteView(SuccessMessageMixin, generic.DeleteView):
     model = ReservationSchedule
     success_url = reverse_lazy("home")
     success_message = "deleted philipp obj"
 
+    def get_object(self, queryset=None):
+        """ Hook to ensure object is owned by request.user. """
+        obj = super(DeleteView, self).get_object()
+        if not obj.owner == self.request.user:
+            raise Http404
+        return obj
+
     def delete(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        name = self.object.name
-        request.session['name'] = name  # name will be change according to your need
+        obj = self.get_object()
+        pk = obj.pk
+        request.session['name'] = pk  # name will be change according to your need
         message = request.session['name'] + ' deleted successfully'
         messages.success(self.request, message)
         return super(DeleteView, self).delete(request, *args, **kwargs)
