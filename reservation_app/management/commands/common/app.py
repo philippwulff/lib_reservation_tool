@@ -19,9 +19,31 @@ class bcolors:
 
 class App:
     def __init__(self, web_adress: str):
-        # TODO check which driver is installed
-        self.driver = webdriver.Safari()
+        self.driver = self.config_driver()
         self.web_adress = web_adress
+
+    def config_driver(self):
+        """Checks which webdriver is installed and open the right one.
+
+        Returns
+        -------
+        object from selenium.webdriver
+        """
+        try:
+            driver = webdriver.Safari()
+            return driver
+        except Exception as e:
+            self._print("Webdriver Safari not available", color_code=bcolors.WARNING)
+        try:
+            chrome_options = webdriver.ChromeOptions()
+            chrome_options.add_argument("--headless")
+            chrome_options.add_argument("--disable-gpu")
+            driver = webdriver.Chrome(options=chrome_options)
+            self._print("Using webdriver Chrome.", color_code=bcolors.OKBLUE)
+            return driver
+        except Exception as e:
+            self._print("Webdriver Chrome not available", color_code=bcolors.WARNING)
+        raise Exception("Cannot launch a webdriver.")
 
     def reset(self, sleep=1):
         """Navigate to the landing page to reset the reservation process."""
@@ -95,9 +117,9 @@ class App:
 
         return info
 
-    def parse_datetime(self, date: str, time: str):
-
-        return dt_str
+    # def parse_datetime(self, date: str, time: str):
+    #
+    #     return dt_str
 
     def _print(self, txt: str, color_code=None):
         txt = f"[{datetime.now():%d-%m-%Y %H:%M:%S}]" + txt

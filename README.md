@@ -65,6 +65,7 @@ The image below shows this architecture:
 
 - Currently there is no "Sign up" page. Users need to be created through the admin site (this requires creating a `superuser` first).
 - If the website of the TUM library is changed, the backend code may break. If the changes are small, this can probably be fixed by editing the CSS locators in `reservation_app/management/commands/common/locators.py`. 
+- If you receive an exception message saying that no webdriver was found, you need to configure this in `reservation_app/management/commands/common/app.py`.
 
 ## Disclaimer
 
