@@ -29,7 +29,13 @@ python manage.py runscheduler       # to start the scheduling backend
 
 > **⚠️ NOTE:** If you do reuse the project, you must change the Django secret key in `reservation_site/settings.py`.
 
-To host it on [pythonanywhere](pythonanywhere.com) you need to follow this check-list (from [this guide](https://help.pythonanywhere.com/pages/DeployExistingDjangoProject/)):
+### Hosting on Google Cloud Services
+
+Plan: [Google Cloud Services](https://cloud.google.com/free/docs/gcp-free-tier#free-tier-usage-limits)
+
+### Hosting on pythonanywhere.com
+
+To host it on [pythonanywhere.com](pythonanywhere.com) you need to follow this check-list (from [this guide](https://help.pythonanywhere.com/pages/DeployExistingDjangoProject/)):
 1. Create an account.
 2. Open a Bash terminal and run
    ```
