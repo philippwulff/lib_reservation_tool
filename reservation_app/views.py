@@ -82,7 +82,7 @@ class DeleteView(SuccessMessageMixin, generic.DeleteView):
     def delete(self, request, *args, **kwargs):
         obj = self.get_object()
         pk = obj.pk
-        request.session['name'] = pk  # name will be change according to your need
-        message = request.session['name'] + ' deleted successfully'
+        request.session['pk'] = pk  # name will be change according to your need
+        message = obj + ' deleted successfully'
         messages.success(self.request, message)
         return super(DeleteView, self).delete(request, *args, **kwargs)
