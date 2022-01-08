@@ -33,11 +33,11 @@ Plan: [Google Cloud Services](https://cloud.google.com/free/docs/gcp-free-tier#f
 
 ### Hosting on pythonanywhere.com
 
-To host it on [pythonanywhere.com](pythonanywhere.com) you need to follow this check-list (from [this guide](https://help.pythonanywhere.com/pages/DeployExistingDjangoProject/)):
-1. Create an account.
-2. Open a Bash terminal and run
+To host it on [pythonanywhere.com](pythonanywhere.com) (PyA) you need to follow this check-list (from [this guide](https://help.pythonanywhere.com/pages/DeployExistingDjangoProject/)):
+1. Create an account on PyA.
+2. Open a Bash terminal on PyA and run
    ```
-   git clone 
+   git clone https://github.com/philippwulff/lib_reservation_tool.git
    cd lib_reservation_tool
    python manage.py migrate
    ```
