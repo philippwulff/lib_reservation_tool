@@ -9,15 +9,7 @@ For this, the tool requires some configuration data from the user (full name, TU
 
 The web app has four pages: the log-in, a profile page, plus the booking and schedule overview pages.
 
-
-
 https://user-images.githubusercontent.com/45896065/148652661-4bfd9d86-747d-4af6-8563-ffda078b544e.mov
-
-
-
-<p align="center">
-  <img src="images/preview.gif" />
-</p>
 
 ## How to use it
 
