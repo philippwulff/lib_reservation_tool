@@ -9,15 +9,7 @@ For this, the tool requires some configuration data from the user (full name, TU
 
 The web app has four pages: the log-in, a profile page, plus the booking and schedule overview pages.
 
-
-
 https://user-images.githubusercontent.com/45896065/148652661-4bfd9d86-747d-4af6-8563-ffda078b544e.mov
-
-
-
-<p align="center">
-  <img src="images/preview.gif" />
-</p>
 
 ## How to use it
 
@@ -41,11 +33,11 @@ Plan: [Google Cloud Services](https://cloud.google.com/free/docs/gcp-free-tier#f
 
 ### Hosting on pythonanywhere.com
 
-To host it on [pythonanywhere.com](pythonanywhere.com) you need to follow this check-list (from [this guide](https://help.pythonanywhere.com/pages/DeployExistingDjangoProject/)):
-1. Create an account.
-2. Open a Bash terminal and run
+To host it on [pythonanywhere.com](pythonanywhere.com) (PyA) you need to follow this check-list (from [this guide](https://help.pythonanywhere.com/pages/DeployExistingDjangoProject/)):
+1. Create an account on PyA.
+2. Open a Bash terminal on PyA and run
    ```
-   git clone 
+   git clone https://github.com/philippwulff/lib_reservation_tool.git
    cd lib_reservation_tool
    python manage.py migrate
    ```
@@ -77,7 +69,7 @@ The image below shows this architecture:
 
 - Currently there is no "Sign up" page. Users need to be created through the admin site (this requires creating a `superuser` first).
 - If the website of the TUM library is changed, the backend code may break. If the changes are small, this can probably be fixed by editing the CSS locators in `reservation_app/management/commands/common/locators.py`. 
-- If you receive an exception message saying that no webdriver was found, you need to configure this in `reservation_app/management/commands/common/app.py`.
+- If you receive an exception message saying that no webdriver was found, `Selenium` could not locate the driver for your browser. You need to configure this in `reservation_app/management/commands/common/app.py`.
 
 ## Disclaimer
 
