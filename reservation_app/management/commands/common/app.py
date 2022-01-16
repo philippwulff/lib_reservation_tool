@@ -43,6 +43,7 @@ class App:
             return driver
         except Exception as e:
             self._print("Webdriver Chrome not available", color_code=bcolors.WARNING)
+            print(e)
         raise Exception("Cannot launch a webdriver.")
 
     def reset(self, sleep=1):
