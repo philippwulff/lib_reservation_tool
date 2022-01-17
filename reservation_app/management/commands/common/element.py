@@ -2,7 +2,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from reservation_app.management.commands.common.locators import LandingPageLocators, BookingPageLocators
 from reservation_app.management.commands.common import utils
 from reservation_app.management.commands.common.exceptions import WebpageLocatorError
-from selenium.common.exceptions import NoSuchElementException
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
+import sys
 
 
 class LocationElement(object):
@@ -74,15 +75,23 @@ class BaseTextElement(object):
 
     def set(self, value):
         """Sets the text to the value supplied"""
-        WebDriverWait(self.driver, 100).until(
-            lambda driver: driver.find_element(*self.locator))
+        try:
+            WebDriverWait(self.driver, 1000).until(
+                lambda driver: driver.find_element(*self.locator))
+        except TimeoutException as e:
+            print(f"Received TimeoutException when trying to set value '{value}'.", file=sys.stderr)
+            return
         self.driver.find_element(*self.locator).clear()
         self.driver.find_element(*self.locator).send_keys(value)
 
     def get(self):
         """Gets the text of the specified object"""
-        WebDriverWait(self.driver, 100).until(
-            lambda driver: driver.find_element(*self.locator))
+        try:
+            WebDriverWait(self.driver, 1000).until(
+                lambda driver: driver.find_element(*self.locator))
+        except TimeoutException as e:
+            print(f"Received TimeoutException when trying to get value.", file=sys.stderr)
+            return
         element = self.driver.find_element(*self.locator)
         return element.get_attribute("value")
 
