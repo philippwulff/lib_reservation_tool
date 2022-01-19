@@ -10,8 +10,8 @@ class LandingPageLocators:
     # The library location elements (the rows)
     STAMMGELAENDE_MORNING = (By.CSS_SELECTOR, "#block-system-main > div > div > div.view-content > table > tbody > tr.odd.views-row-first")
     STAMMGELAENDE_EVENING = (By.CSS_SELECTOR, "#block-system-main > div > div > div.view-content > table > tbody > tr:nth-child(2)")
-    MATH_INFO_MORNING = (By.CSS_SELECTOR, "#block-system-main > div > div > div.view-content > table > tbody > tr:nth-child(3)")
-    MATH_INFO_EVENING = (By.CSS_SELECTOR, "#block-system-main > div > div > div.view-content > table > tbody > tr:nth-child(4)")
+    MATH_INFO_MORNING = (By.CSS_SELECTOR, "#block-system-main > div > div > div.view-content > table > tbody > tr:nth-child(6)")
+    MATH_INFO_EVENING = (By.CSS_SELECTOR, "#block-system-main > div > div > div.view-content > table > tbody > tr:nth-child(7)")
 
     # The column elements (these elements are relative to the row elements)
     BRANCH = (By.CSS_SELECTOR, "td.views-field-field-teilbibliothek")

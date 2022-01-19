@@ -96,7 +96,6 @@ class App:
             # The currently open reservation has been made previously.
             if self.is_same_date(landing, branch_name, time_slot, current_reservation):
                 info["already_reserved"] = True
-                info["success"] = True
                 info["reservation_datetime"] = current_reservation
                 return info
             # Cache this value, as the landing is no longer available, when navigating to 'booking'

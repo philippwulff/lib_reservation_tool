@@ -2,6 +2,7 @@ from django.core.management import BaseCommand
 from .common.app import App
 from reservation_app.models import ReservationSchedule
 from django.utils import timezone
+import time
 
 
 class Command(BaseCommand):
@@ -19,5 +20,8 @@ class Command(BaseCommand):
                 }, current_reservation=res_sched.current_res_slot)
                 if info["success"]:
                     res_sched.current_res_slot = info["reservation_datetime"]
+                    res_sched.save()
+
+                time.sleep(3)
 
         app.teardown()

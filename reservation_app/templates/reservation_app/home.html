@@ -20,7 +20,7 @@
         <td>{{ ResSched.lib_branch }}</td>
         <td>{{ ResSched.res_slot }}</td>
         <td>{{ ResSched.pub_datetime }}</td>
-        <td>{{ ResSched.current_res_datetime }}</td>
+        <td>{{ ResSched.current_res_slot }}</td>
           <td>
               <form action="{% url 'delete_sched' pk=ResSched.pk %}" method="POST">
                   {% csrf_token %}
