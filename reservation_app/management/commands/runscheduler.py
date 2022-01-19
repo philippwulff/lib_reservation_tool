@@ -8,7 +8,7 @@ import datetime
 
 class Command(BaseCommand):
 
-    last_update = None
+    last_update = datetime.datetime.now()
 
     def handle(self, *args, **options):
         app = App("https://www.ub.tum.de/arbeitsplatz-reservieren")
@@ -28,6 +28,7 @@ class Command(BaseCommand):
 
             if datetime.datetime.now() - self.last_update > datetime.timedelta(minutes=10.):
                 print("Still online...")
+                self.last_update = datetime.datetime.now()
 
             time.sleep(5)
 
