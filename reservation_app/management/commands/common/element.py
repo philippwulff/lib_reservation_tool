@@ -54,7 +54,7 @@ class LocationElement(object):
         try:
             if self.is_available:
                 # Click does not work on my machine
-                self.driver.get(self.reserve_button.find_element((By.CSS_SELECTOR, "a")).get_attribute("href"))
+                self.driver.get(self.reserve_button.find_element(By.CSS_SELECTOR, "a").get_attribute("href"))
                 # utils.javascript_click(self.driver, self.reserve_button)
             else:
                 print(f"No reservation possible for branch {self.branch} at date and time {self.date, self.time}.")
