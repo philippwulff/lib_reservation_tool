@@ -108,9 +108,11 @@ class App:
                 booking.complete_reservation(full_name, tum_email, tum_id)
                 info["success"] = True
                 info["reservation_datetime"] = reservation_datetime
+                self._print(f"Booked branch {branch_name} at time slot {time_slot} for user {full_name}.", bcolors.OKGREEN)
             # Fully booked.
             else:
-                self._print(f"Branch {branch_name} is not available at time slot {time_slot}", bcolors.WARNING)
+                self._print(f"Branch {branch_name} is not available at time slot {time_slot}", bcolors.WARNING, end="\r")
+                pass
         # This is thrown in case of changes in the HTML and CSS of the reservation webpage.
         except WebpageLocatorError as e:
             self._print(f"Ran into {e} (info: {e.args[0]})", bcolors.FAIL)
@@ -121,12 +123,12 @@ class App:
     #
     #     return dt_str
 
-    def _print(self, txt: str, color_code=None):
+    def _print(self, txt: str, color_code=None, end=None):
         txt = f"[{datetime.now():%d-%m-%Y %H:%M:%S}]" + txt
         if not color_code:
             print(txt)
         else:
-            print(f"{color_code}{txt}{bcolors.ENDC}")
+            print(f"{color_code}{txt}{bcolors.ENDC}{' '*30}", end=end)
 
     def teardown(self):
         self.driver.close()
