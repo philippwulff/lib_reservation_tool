@@ -3,9 +3,13 @@ from .common.app import App
 from reservation_app.models import ReservationSchedule
 from django.utils import timezone
 import time
+import datetime
 
 
 class Command(BaseCommand):
+
+    last_update = None
+
     def handle(self, *args, **options):
         app = App("https://www.ub.tum.de/arbeitsplatz-reservieren")
         while True:
@@ -22,6 +26,9 @@ class Command(BaseCommand):
                     res_sched.current_res_slot = info["reservation_datetime"]
                     res_sched.save()
 
-                time.sleep(3)
+            if datetime.datetime.now() - self.last_update > datetime.timedelta(minutes=10.):
+                print("Still online...")
+
+            time.sleep(5)
 
         app.teardown()

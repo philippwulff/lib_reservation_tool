@@ -111,7 +111,7 @@ class App:
                 self._print(f"Booked branch {branch_name} at time slot {time_slot} for user {full_name}.", bcolors.OKGREEN)
             # Fully booked.
             else:
-                self._print(f"Branch {branch_name} is not available at time slot {time_slot}", bcolors.WARNING, end="\r")
+                # self._print(f"Branch {branch_name} is not available at time slot {time_slot}", bcolors.WARNING, end="\r")
                 pass
         # This is thrown in case of changes in the HTML and CSS of the reservation webpage.
         except WebpageLocatorError as e:
