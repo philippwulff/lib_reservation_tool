@@ -92,7 +92,7 @@ class App:
 
         try:
             self.reset()
-            landing = LandingPage(self.driver)
+            landing = LandingPage(self.driver)      # can raise WebpageLocatorError
             # The currently open reservation has been made previously.
             if self.is_same_date(landing, branch_name, time_slot, current_reservation):
                 info["already_reserved"] = True
