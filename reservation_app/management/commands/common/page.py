@@ -1,5 +1,7 @@
 from reservation_app.management.commands.common.element import BookingFormElement, LocationElement
 from reservation_app.management.commands.common.locators import LandingPageLocators as LPL
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from reservation_app.management.commands.common.exceptions import WebpageLocatorError
 
 
 class BasePage(object):
@@ -23,12 +25,20 @@ class LandingPage(BasePage):
     def __init__(self, driver):
         """See parent class."""
         super(LandingPage, self).__init__(driver)
-        self.branches = {
-            ("stammgelände", "morning"): LocationElement(driver, LPL.STAMMGELAENDE_MORNING),
-            ("stammgelände", "evening"): LocationElement(driver, LPL.STAMMGELAENDE_EVENING),
-            ("mathematik_informatik", "morning"): LocationElement(driver, LPL.MATH_INFO_MORNING),
-            ("mathematik_informatik", "evening"): LocationElement(driver, LPL.MATH_INFO_EVENING),
+
+        locs = {
+            "stammgelände": LPL.STAMMGELAENDE,
+            "mathematik_informatik": LPL.MATH_INFO,
         }
+
+        self.branches = {}
+        for branch_name, loc in locs.items():
+            try:
+                rows = driver.find_elements(*loc)           # Two rows in the table
+                self.branches[(branch_name, "morning")] = LocationElement(driver, rows[0])
+                self.branches[(branch_name, "evening")] = LocationElement(driver, rows[1])
+            except NoSuchElementException as e:
+                raise WebpageLocatorError(f"Could not find the 'location' row element in the table.", e)
 
     def check_availability(self):
         """Checks which library branches have seats available.

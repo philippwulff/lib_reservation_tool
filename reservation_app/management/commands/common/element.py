@@ -10,12 +10,10 @@ import sys
 class LocationElement(object):
     reserve_str = "Zur Reservierung"
 
-    def __init__(self, driver, locator: (str, str)):
+    def __init__(self, driver, parent):
         self.driver = driver
-        try:
-            self.parent = driver.find_element(*locator)
-        except NoSuchElementException as e:
-            raise WebpageLocatorError(f"Could not find the 'location' row element in the table.", e)
+        self.parent = parent
+
         try:
             self.reserve_button = self.parent.find_element(*LandingPageLocators.RESERVE_BUTTON)
         except NoSuchElementException as e:

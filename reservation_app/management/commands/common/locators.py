@@ -8,10 +8,12 @@ class LandingPageLocators:
     """
 
     # The library location elements (the rows)
-    STAMMGELAENDE_MORNING = (By.CSS_SELECTOR, "#block-system-main > div > div > div.view-content > table > tbody > tr.odd.views-row-first")
-    STAMMGELAENDE_EVENING = (By.CSS_SELECTOR, "#block-system-main > div > div > div.view-content > table > tbody > tr:nth-child(2)")
-    MATH_INFO_MORNING = (By.CSS_SELECTOR, "#block-system-main > div > div > div.view-content > table > tbody > tr:nth-child(6)")
-    MATH_INFO_EVENING = (By.CSS_SELECTOR, "#block-system-main > div > div > div.view-content > table > tbody > tr:nth-child(9)")
+    #STAMMGELAENDE_MORNING = (By.CSS_SELECTOR, "#block-system-main > div > div > div.view-content > table > tbody > tr.odd.views-row-first")
+    STAMMGELAENDE = (By.XPATH, "//table//tr/td[contains(text(),'Stammgelände') and @class='views-field views-field-field-teilbibliothek']/..")
+    #STAMMGELAENDE_EVENING = (By.CSS_SELECTOR, "#block-system-main > div > div > div.view-content > table > tbody > tr:nth-child(2)")
+    MATH_INFO = (By.XPATH, "//table//tr/td[contains(text(),'Mathematik & Informatik') and @class='views-field views-field-field-teilbibliothek']/..")
+    #MATH_INFO_MORNING = (By.CSS_SELECTOR, "#block-system-main > div > div > div.view-content > table > tbody > tr:nth-child(6)")
+    #MATH_INFO_EVENING = (By.CSS_SELECTOR, "#block-system-main > div > div > div.view-content > table > tbody > tr:nth-child(9)")
 
     # The column elements (these elements are relative to the row elements)
     BRANCH = (By.CSS_SELECTOR, "td.views-field-field-teilbibliothek")
