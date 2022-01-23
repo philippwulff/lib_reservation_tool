@@ -37,8 +37,11 @@ class LandingPage(BasePage):
                 rows = driver.find_elements(*loc)           # Two rows in the table
                 self.branches[(branch_name, "morning")] = LocationElement(driver, rows[0])
                 self.branches[(branch_name, "evening")] = LocationElement(driver, rows[1])
-            except NoSuchElementException as e:
-                raise WebpageLocatorError(f"Could not find the 'location' row element in the table.", e)
+            except (NoSuchElementException, IndexError) as e:
+                if isinstance(e, NoSuchElementException):
+                    raise WebpageLocatorError(f"Could not find the 'location' row element in the table.", e)
+                elif isinstance(e, IndexError):
+                    raise WebpageLocatorError(f"Could not index the library elements.", e)
 
     def check_availability(self):
         """Checks which library branches have seats available.
