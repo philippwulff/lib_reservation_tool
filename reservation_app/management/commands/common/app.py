@@ -33,7 +33,7 @@ class App:
             driver = webdriver.Safari()
             return driver
         except Exception as e:
-            self._print("Webdriver Safari not available", color_code=bcolors.WARNING)
+            self._print(f"Webdriver Safari not available: {repr(e)}", color_code=bcolors.WARNING)
         try:
             chrome_options = webdriver.ChromeOptions()
             chrome_options.add_argument("--headless")
@@ -42,7 +42,7 @@ class App:
             self._print("Using webdriver Chrome.", color_code=bcolors.OKBLUE)
             return driver
         except Exception as e:
-            self._print("Webdriver Chrome not available", color_code=bcolors.WARNING)
+            self._print(f"Webdriver Chrome not available: {repr(e)}", color_code=bcolors.WARNING)
             print(e)
         raise Exception("Cannot launch a webdriver.")
 
