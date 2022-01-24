@@ -29,22 +29,25 @@ class App:
         -------
         object from selenium.webdriver
         """
-        try:
-            driver = webdriver.Safari()
-            return driver
-        except Exception as e:
-            self._print(f"Webdriver Safari not available: {repr(e)}", color_code=bcolors.WARNING)
-        try:
-            chrome_options = webdriver.ChromeOptions()
-            chrome_options.add_argument("--headless")
-            chrome_options.add_argument("--disable-gpu")
-            driver = webdriver.Chrome(options=chrome_options)
-            self._print("Using webdriver Chrome.", color_code=bcolors.OKBLUE)
-            return driver
-        except Exception as e:
-            self._print(f"Webdriver Chrome not available: {repr(e)}", color_code=bcolors.WARNING)
-            print(e)
-        raise Exception("Cannot launch a webdriver.")
+        for ith_retry in range(100):
+            try:
+                driver = webdriver.Safari()
+                return driver
+            except Exception as e:
+                self._print(f"Webdriver Safari not available: {repr(e)}", color_code=bcolors.WARNING)
+            try:
+                chrome_options = webdriver.ChromeOptions()
+                chrome_options.add_argument("--headless")
+                chrome_options.add_argument("--disable-gpu")
+                driver = webdriver.Chrome(options=chrome_options)
+                self._print("Using webdriver Chrome.", color_code=bcolors.OKBLUE)
+                return driver
+            except Exception as e:
+                self._print(f"Webdriver Chrome not available: {repr(e)}", color_code=bcolors.WARNING)
+                print(e)
+            time.sleep(10)
+        raise Exception(f"Cannot launch a webdriver after {ith_retry} retries.")
+
 
     def reset(self, sleep=1):
         """Navigate to the landing page to reset the reservation process."""
@@ -116,7 +119,7 @@ class App:
         # This is thrown in case of changes in the HTML and CSS of the reservation webpage.
         except WebpageLocatorError as e:
             self._print(f"Ran into {e} (info: {e.args[0]})", bcolors.FAIL)
-
+            time.sleep(30)  # Wait for some time because there is some issue with the website
         return info
 
     # def parse_datetime(self, date: str, time: str):
