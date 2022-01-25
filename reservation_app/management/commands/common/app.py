@@ -106,7 +106,7 @@ class App:
             # The reservation can be made.
             if landing.is_available(branch_name, time_slot):
                 landing.click_reserve(branch_name, time_slot)
-                time.sleep(1)
+                time.sleep(0.5)
                 booking = BookingPage(self.driver)
                 booking.complete_reservation(full_name, tum_email, tum_id)
                 info["success"] = True

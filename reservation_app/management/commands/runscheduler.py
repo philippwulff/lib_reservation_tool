@@ -13,7 +13,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         app = App("https://www.ub.tum.de/arbeitsplatz-reservieren")
         while True:
-            for res_sched in ReservationSchedule.objects.all():
+            for res_sched in ReservationSchedule.objects.all()[::-1]:
 
                 info = app.make_reservation({
                     "branch_name": res_sched.lib_branch,
@@ -29,7 +29,5 @@ class Command(BaseCommand):
             if datetime.datetime.now() - self.last_update > datetime.timedelta(minutes=10.):
                 print("Still online...")
                 self.last_update = datetime.datetime.now()
-
-            time.sleep(5)
 
         app.teardown()
