@@ -119,7 +119,7 @@ class App:
         # This is thrown in case of changes in the HTML and CSS of the reservation webpage.
         except WebpageLocatorError as e:
             self._print(f"Ran into {e} (info: {e.args[0]})", bcolors.FAIL)
-            time.sleep(30)  # Wait for some time because there is some issue with the website
+            # time.sleep(30)  # Wait for some time because there is some issue with the website
         return info
 
     # def parse_datetime(self, date: str, time: str):

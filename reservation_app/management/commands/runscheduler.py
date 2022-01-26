@@ -30,4 +30,6 @@ class Command(BaseCommand):
                 print("Still online...")
                 self.last_update = datetime.datetime.now()
 
+            # time.sleep(5)
+
         app.teardown()
