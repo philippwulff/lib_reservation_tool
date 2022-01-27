@@ -33,7 +33,7 @@ Plan: [Google Cloud Services](https://cloud.google.com/free/docs/gcp-free-tier#f
 
 ### Hosting on pythonanywhere.com
 
-To host it on [pythonanywhere.com](pythonanywhere.com) (PyA) you need to follow this check-list (from [this guide](https://help.pythonanywhere.com/pages/DeployExistingDjangoProject/)):
+To host it on [pythonanywhere.com](https://www.pythonanywhere.com/) (PyA) you need to follow this check-list (from [this guide](https://help.pythonanywhere.com/pages/DeployExistingDjangoProject/)):
 1. Create an account on PyA.
 2. Open a Bash terminal on PyA and run
    ```
@@ -55,7 +55,7 @@ To host it on [pythonanywhere.com](pythonanywhere.com) (PyA) you need to follow 
 
 The tool opens the webpage at https://www.ub.tum.de/arbeitsplatz-reservieren, 
 and waits until it is possible to reserve the desired seat. 
-I uses [Selenium](https://selenium-python.readthedocs.io) as the backbbone of this process. 
+I use [Selenium](https://selenium-python.readthedocs.io) as the backbbone of this process. 
 The frontend is powered by [Django](https://www.djangoproject.com). 
 These two parts of the software are separate processes and communicate via a shared [SQLite](https://www.sqlite.org/index.html) database.
 The image below shows this architecture:
