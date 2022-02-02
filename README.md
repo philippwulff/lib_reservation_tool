@@ -67,6 +67,7 @@ The image below shows this architecture:
 
 ## Known issues
 
+- The library booking page now has a Captcha that needs to be solved. This tool cannot do that at the moment.
 - Currently there is no "Sign up" page. Users need to be created through the admin site (this requires creating a `superuser` first).
 - If the website of the TUM library is changed, the backend code may break. If the changes are small, this can probably be fixed by editing the CSS locators in `reservation_app/management/commands/common/locators.py`. 
 - If you receive an exception message saying that no webdriver was found, `Selenium` could not locate the driver for your browser. You need to configure this in `reservation_app/management/commands/common/app.py`.
